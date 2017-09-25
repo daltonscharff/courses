@@ -5,25 +5,53 @@
 #include <fstream>
 #include <functional>
 #include <string>
+#include <ctime>
+#include <cstdio>
+#include <chrono>
 #include "sha256.h"
 using namespace std;
 
-void generateGenotype(long, char const*);
-char* openGenotype(char const*);
-void getTime();
+char* generateGenotype(long);
+void writeGenotype(char const*, char*);
+char* readGenotype(char const*);
+void startTimer();
+void endTimer();
 
-int main(int argc, char** argv) {
-    //generateGenotype(1024*1024*1024, "genotype.gno");
-    char* genotype = openGenotype("genotype.gno");
+typedef std::chrono::high_resolution_clock Clock;
 
-    std::cout << sha256(genotype);
+auto timer = Clock::now();
+
+int main(int argc, char** argv){
+    char* genotype;
+    char const* fileName = "genotype.gno";
+    long genotypeLength = 1024*1024*1024;
+    
+    std::cout << "Generating genotype of " << genotypeLength << " characters...\t" << std::flush;
+    startTimer();
+    genotype = generateGenotype(genotypeLength);
+    endTimer();
+    
+    std::cout << "Writing genotype to '" << fileName << "'...\t" << std::flush;
+    startTimer();
+    writeGenotype(fileName, genotype);
+    endTimer();
+    
+    std::cout << "Reading genotype from '" << fileName << "'...\t" << std::flush;
+    startTimer();
+    genotype = readGenotype(fileName);
+    endTimer();
+
+    std::cout << "Generating hash of genotype...\t" << std::flush;
+    startTimer();
+    std::string hash = sha256(genotype);
+    endTimer();
+    std::cout << hash;
 
     free(genotype);
     return 0;
 }
 
-void generateGenotype(long length, char const* fileName){
-    std::cout << "Generating random genotype array...\n";
+char* generateGenotype(long length){
     char* genotype = (char*) calloc(length, sizeof(char));
     srand(time(NULL));
     for(int i = 0; i < length; i++){
@@ -42,36 +70,42 @@ void generateGenotype(long length, char const* fileName){
                 break;
         }
     }
-    
-    std::cout << "Writing genotype array to file '" << fileName << "'...\n";
+    return genotype;
+}
+
+void writeGenotype(char const* fileName, char* genotype){
     ofstream file;
     file.open(fileName);
     file << genotype << "\n";
     file.close();
     free(genotype);
     return;
-}
+} 
 
-char* openGenotype(char const* fileName){
+char* readGenotype(char const* fileName){
     ifstream file;
     int length;
     char* genotype;
     file.open(fileName);
     
     if(file.is_open()){
-        std::cout << "Reading genotype from file '" << fileName << "'...\n";
         file.seekg(0, file.end);
         int length = file.tellg();
         file.seekg(0, file.beg);
-        
         genotype = (char*) calloc(length, sizeof(char));
-        
         file.read(genotype, length);
-        
-        file.close();
+        file.close();     
         return genotype;
     }else{
         std::cout << "Unable to open file: " << fileName << "\n";
         return NULL;
     }
+}
+
+void startTimer(){
+    timer = Clock::now();
+}
+
+void endTimer(){
+    std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(Clock::now() - timer).count() << " ms\n";
 }
