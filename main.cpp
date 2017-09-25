@@ -11,6 +11,7 @@
 #include "sha256.h"
 using namespace std;
 
+std::string createHash(std::string);
 char* generateGenotype(long);
 void writeGenotype(char const*, char*);
 char* readGenotype(char const*);
@@ -18,10 +19,19 @@ void startTimer();
 void endTimer();
 
 typedef std::chrono::high_resolution_clock Clock;
-
 auto timer = Clock::now();
 
 int main(int argc, char** argv){
+    std::string hash;
+    
+    hash = createHash(hash);
+    
+    std::cout << hash;
+
+    return 0;
+}
+
+std::string createHash(std::string hash){
     char* genotype;
     char const* fileName = "genotype.gno";
     long genotypeLength = 1024*1024*1024;
@@ -31,24 +41,23 @@ int main(int argc, char** argv){
     genotype = generateGenotype(genotypeLength);
     endTimer();
     
-    std::cout << "Writing genotype to '" << fileName << "'...\t" << std::flush;
+    std::cout << "Writing genotype to '" << fileName << "'...\t\t" << std::flush;
     startTimer();
     writeGenotype(fileName, genotype);
     endTimer();
     
-    std::cout << "Reading genotype from '" << fileName << "'...\t" << std::flush;
+    std::cout << "Reading genotype from '" << fileName << "'...\t\t" << std::flush;
     startTimer();
     genotype = readGenotype(fileName);
     endTimer();
 
-    std::cout << "Generating hash of genotype...\t" << std::flush;
+    std::cout << "Generating hash of genotype...\t\t\t" << std::flush;
     startTimer();
-    std::string hash = sha256(genotype);
+    hash = sha256(genotype);
     endTimer();
-    std::cout << hash;
-
+    
     free(genotype);
-    return 0;
+    return hash;
 }
 
 char* generateGenotype(long length){
