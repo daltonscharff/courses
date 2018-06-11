@@ -1,0 +1,25 @@
+
+real	0m0.032s
+user	0m0.049s
+sys	0m0.002s
+trying to remove /scratch/3923485.clusman0a.frank.sam.pitt.edu
++---------------------------------------------------------------------+
+|                        JOB INFORMATION                              |
++---------------------------------------------------------------------+
+|
+|  Date      : Sat Mar 18 18:46:51 EDT 2017
+|  Job ID    : 3923485.clusman0a.frank.sam.pitt.edu
+|  Username  : das227
+|  Group     : cs1645-2017s
+|  Job Name  : das227_lab3
+|  Session   : 30708
+|  Limits    : neednodes=1:ppn=2,nodes=1:ppn=2,pmem=2666mb,walltime=00:10:00
+|  Resources : cput=00:00:00,energy_used=0,mem=0kb,vmem=0kb,walltime=00:00:02
+|  Disk      : 4.0K
+|  Queue     : nshared
+|  Account   : cs1645-2017a
+|  Exit code : 20
+|  Local scr : /scratch/3923485.clusman0a.frank.sam.pitt.edu
+|  Node/cores: 48/2 
+|
+[---------------------------------------------------------------------]

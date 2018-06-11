@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% if eventList is defined and eventList|length > 0 %}
+    <table>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>date</th>
+            <th>requested by</th>
+            <th>assigned staff</th>
+        </tr>
+        {% for i in range(eventList|length) %}
+        <tr>
+            <td>{{ id[i] }}</td>
+            <td>{{ name[i] }}</td>
+            <td>{{ date[i] }}</td>
+            <td>{{ req[i] }}</td>
+            {% if assign[i]|length == 0 %}
+            <td>No staff signed up.</td>
+            {% else %}
+            <td>{{ assign[i] }}</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>
+        {{ noEventsMessage }}
+    </p>
+    {% endif %}
+{% endblock %}

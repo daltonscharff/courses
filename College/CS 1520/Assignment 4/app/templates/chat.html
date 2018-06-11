@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div id="chatPage">
+    {% if generalError is defined %}
+    <p class="error">
+        {{ generalError }}
+    </p>
+    {% endif %}
+
+    <table>
+        <tr>
+            <td id="sendMessageCell">
+                <input type="text" placeholder="Type Something..." onkeyup="toggleSendMessageButton(event)" id="sendMessageInputBox"/>
+            </td>
+            <td>
+                <button id="sendMessageButton" onclick="sendMessage({{ user.id }},{{ room.id }}); document.getElementById('sendMessageInputBox').value=''" disabled>Send</button>
+            </td>
+        </tr>
+    </table>
+
+    <table id="conversationTable">
+
+    </table>
+
+    </div>
+
+    <script>startPolling({{ room.id }}); toggleSendMessageButton();</script>
+{% endblock %}

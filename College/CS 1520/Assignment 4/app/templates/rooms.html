@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div id="roomsPage">
+    {% if generalError is defined %}
+    <p class="error">
+        {{ generalError }}
+    </p>
+    {% endif %}
+    {% if myRooms|length > 0 or otherRooms|length > 0 %}
+        {% if myRooms|length > 0 %}
+        <h4>My Rooms</h4>
+        <table>
+        {% for room in myRooms %}
+            <tr>
+                <td>
+                    {{ room.name }}
+                </td>
+                <td>
+                    <button onclick="window.location.replace('/api/deleteRoom?id={{ room.id }}')">Delete</button>
+                </td>
+                <td>
+                    <button onclick="window.location.href = '/room/{{ room.id }}'">Join</button>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        <br /><br /><br />
+        {% endif %}
+        {% if otherRooms|length > 0 %}
+        <h4>Other Rooms</h4>
+        <table>
+        {% for room in otherRooms %}
+            <tr>
+                <td>
+                    {{ room.name }}
+                </td>
+                <td>
+                    <button onclick="window.location.href = '/room/{{ room.id }}'">Join</button>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        <br /><br /><br />
+        {% endif %}
+    {% else %}
+    <p id="noRooms">
+        There are no chatrooms available.
+    </p>
+    {% endif %}
+    <h4>Create Room</h4>
+    <table>
+        <form action="/api/createRoom" method="GET">
+        <tr>
+            <td>
+                <input type="text" name="roomName" id="createTableInputBox" onkeyup="toggleCreateTableButton()" placeholder="Room Name" required/>
+            </td>
+            <td></td>
+            <td>
+                <input type="submit" id="createTableButton" disabled value="Create"/>
+            </td>
+        </tr>
+        </form>
+    </table>
+    </div>
+
+    <script>toggleCreateTableButton();</script>
+{% endblock %}

@@ -1,0 +1,1 @@
+The busy wait occurs on Part3_server.c lines 53-54. When the pointer arrives at an asterisk character, it knows that the client has read all of the data and can finish (at least for the purpose of this sample program).

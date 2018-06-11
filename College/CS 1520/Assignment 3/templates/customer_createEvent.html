@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% if generalError is defined %}
+    <p class="error">
+        {{ generalError }}
+    </p>
+    {% endif %}
+    <form action="" method="POST" id="createEventForm">
+        <div>
+            <label>Name:</label>
+            {% if nameError is defined %}
+            <span class="error">{{ nameError }}</span>
+            {% endif %}
+            <br />
+            <input type="text" name="name" value="{{ name }}" autofocus/>
+        </div>
+        <div>
+            <label>Date:</label>
+            {% if dateError is defined %}
+            <span class="error">{{ dateError }}</span>
+            {% endif %}
+            <br />
+            <input type="date" name="date" value="{{ date }}"/>
+        </div>
+        <br />
+        <div>
+            <input type="submit" value="Submit"/>
+        </div>
+    </form>
+{% endblock %}

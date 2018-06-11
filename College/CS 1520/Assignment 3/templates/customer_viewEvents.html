@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% if eventList is defined and eventList|length > 0 %}
+    <table>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>date</th>
+            <th>requested by</th>
+            <th>assigned staff</th>
+            <th>cancel</th>
+        </tr>
+        {% for i in range(eventList|length) %}
+        <tr>
+            <td>{{ id[i] }}</td>
+            <td>{{ name[i] }}</td>
+            <td>{{ date[i] }}</td>
+            <td>{{ req[i] }}</td>
+            <td>{{ assign[i] }}</td>
+            <td>
+                <form action="" method="POST" class="openEventForms">
+                    <input type="hidden" name="eventID" value="{{ id[i] }}" />
+                    <input type="submit" value="&#x2716;" />
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>
+        There are no events scheduled.
+    </p>
+    {% endif %}
+{% endblock %}

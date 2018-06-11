@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Money On My Mind</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div>
+        <span id="titleDiv">
+            <h1>Budget for <span id="currentMonth">#MONTH#</span></h1>
+        </span>
+    </div>
+    <br />
+    {% block body %}
+    {% endblock %}
+</body>
+</html>

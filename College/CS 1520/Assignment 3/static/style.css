@@ -1,0 +1,93 @@
+body {
+    margin: 10px;
+    padding: 0px;
+}
+table {
+    border-collapse: collapse;
+    min-width: 600px;
+    max-width: 80%;
+}
+table td, table th {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+table td:nth-child(1) {
+    text-align: right;
+}
+table tr:nth-child(even) {
+    background-color: AliceBlue;
+}
+input[type="text"], input[type="password"], input[type="date"] {
+    margin-bottom: 5px;
+    width: 250px;
+}
+input[type="button"] {
+    margin-right: 20px;
+}
+
+
+.error {
+    color: red;
+    font-size: 11px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.success {
+    color: green;
+    font-size: 11px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+
+#titleDiv {
+    display: inline-block;
+    width: calc(50% - 5px);
+    margin: 0px;
+    padding: 0px;
+}
+#titleDiv h3 {
+    margin: 0px;
+}
+#logoutDiv {
+    display: inline-block;
+    width: calc(50% - 5px);
+    text-align: right;
+    margin: 0px;
+    padding: 0px;
+}
+#usernameLink {
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 10px;
+    color: black;
+    font-style: italic;
+}
+#logoutLink {
+    text-decoration: none;
+    font-style: italic;
+    color: grey;
+}
+#changeViewButton {
+    float: right;
+}
+
+
+#loginForm .error, #createEventForm .error {
+    color: red;
+    font-size: 11px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin: 0px;
+}
+#loginForm label {
+    margin-top: 5px;
+}
+
+
+.openEventForms input[type="submit"] {
+    font-size: 12px;
+}

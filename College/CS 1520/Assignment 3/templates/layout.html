@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }} - So You Think You Can Cater</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div>
+        <span id="titleDiv">
+            <h3>{{ title }}</h3>
+        </span>
+        {% if "status" in session %}
+        <span id="logoutDiv">
+            <a href="/" id="usernameLink">{{ session["username"] }}</a>
+            <a href="{{ url_for('endSession') }}" id="logoutLink">logout</a>
+        </span>
+        {% endif %}
+    </div>
+    <hr />
+    <br />
+    {% if altViewButton is defined and altViewURL is defined %}
+    <button id="changeViewButton" onclick="window.location.href='{{ altViewURL }}'">{{ altViewButton }}</button>
+    {% endif %}
+    {% block body %}
+    {% endblock %}
+</body>
+</html>

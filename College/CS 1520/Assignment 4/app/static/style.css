@@ -1,0 +1,142 @@
+h1, h2, h3, h4, h5 {
+    margin: 0px;
+    padding: 0px;
+}
+
+hr {
+    margin: 3px;
+}
+
+#loginPage, #chatPage, #roomsPage {
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+}
+
+#layoutDiv button {
+    padding: 0px;
+}
+
+#layoutDiv h1, #layoutDiv h3 {
+    margin: 0px;
+}
+
+#layoutDiv table {
+    width: 100%;
+}
+
+#layoutDiv td {
+    vertical-align: bottom;
+}
+
+#layoutDiv td:nth-child(3) {
+    text-align: right;
+}
+
+#layoutDiv td:not(:nth-child(2)) {
+    min-width: 150px;
+}
+
+#layoutDiv a {
+    text-decoration: none;
+    color: black;
+    width: 100%;
+    text-align: center;
+}
+
+#logoutSpan {
+    float: right;
+}
+
+#loginForm .error {
+    color: red;
+    font-size: 11px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#loginForm {
+    text-align: center;
+}
+
+#loginForm input[type="button"] {
+    width: 85px;
+}
+
+#loginForm input[type="text"] {
+    margin-bottom: 10px;
+}
+
+#roomsPage table {
+    border-top: 1px solid black;
+    border-bottom: 2px solid black;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-collapse: collapse;
+    width: 800px;
+}
+
+#roomsPage tr {
+    border-bottom: 1px solid lightgrey;
+}
+
+#roomsPage td:nth-of-type(1){
+    width: 100%;
+}
+
+#roomsPage td {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+#roomsPage button, input[type="submit"] {
+    width: 80px;
+}
+
+#chatPage table {
+    width: 100%;
+}
+
+#chatPage input {
+    width: 100%;
+}
+
+#chatPage table {
+    border-collapse: collapse;
+}
+
+#sendMessageCell {
+    width: 90%;
+}
+
+#chatPage button {
+    float: right;
+}
+
+.senderCell {
+    max-width: 200px;
+    padding-right: 5px;
+    padding-left: 5px;
+    text-align: right;
+}
+
+.textCell {
+    width: 100%;
+}
+
+.messageRow:nth-child(even) {
+    background-color: #eee;
+}
+
+.senderCell, .textCell {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.hidden {
+    visibility: hidden;
+}

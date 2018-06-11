@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% if generalError is defined %}
+    <p class="error">
+        {{ generalError }}
+    </p>
+    {% endif %}
+    <form action="" method="POST" id="loginForm">
+        <div>
+            <label>Username:</label>
+            {% if usernameError is defined %}
+            <span class="error">{{ usernameError }}</span>
+            {% endif %}
+            <br />
+            <input type="text" name="username" value="{{ username }}" onkeyup="if(event.which == 13 || event.keyCode == 13){setIsNewUser('False');}" autofocus/>
+        </div>
+        <div>
+            <label>Password:</label>
+            {% if passwordError is defined %}
+            <span class="error">{{ passwordError }}</span>
+            {% endif %}
+            <br />
+            <input type="password" name="password" onkeyup="if(event.which == 13 || event.keyCode == 13){setIsNewUser('False');}"/>
+        </div>
+        <br />
+        <div>
+            <input type="hidden" name="isNewUser" id="isNewUserField"/>
+            <input type="button" name="signInButton" value="Sign In" onclick="setIsNewUser('False')"/>
+            <input type="button" name="signUpButton" value="Sign Up as Customer" onclick="setIsNewUser('True')"/>
+        </div>
+    </form>
+{% endblock %}

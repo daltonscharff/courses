@@ -1,0 +1,11 @@
+#!/bin/bash
+#PBS -N das227_lab3
+#PBS -A cs1645-2017a
+#PBS -o lab3_4threads_run3.log
+#PBS -j oe
+#PBS -q shared
+#PBS -l nodes=1:ppn=4
+#module purge
+module load gcc/4.5
+cd $PBS_O_WORKDIR
+time ./lab3 >& lab3_4threads_run3.log

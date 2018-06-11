@@ -1,0 +1,3 @@
+**** readme.txt for das227's lab 4 ****
+
+The reason that freader.c had not been working correctly is because the readFile function had not been locked with a mutex. Therefore, when readFile was called in the main class within the for-loop, the program would simply go through this for-loop without waiting for the previous readFile call to finish. This would corrupt the data stored in global variables that were used within the readFile function, such as the bufCnt variable. Global variables are accessible by any thread. Therefore, when multiple threads called readFile at once, the data in bufCnt was shared, corrupting the data.

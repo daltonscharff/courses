@@ -1,0 +1,59 @@
+NUM_OF_RANDOMS: 10
+REPEATER: 100
+
+			|	Sort Whole			|	Sort Halves and Merge 	|	Parallel Sorting
+			|	(Part2_combined.c)	|	(Part2_split.c)   		|	(Part5_server.c)
+------------------------------------------------------------------------------------------------
+Average:	|	2μs					|	1μs						|	76921μs
+Fastest:	|	1μs					|	1μs						|	188020μs
+Slowest:	|	3μs					|	4μs						|	16494μs
+
+
+================================================================================================
+================================================================================================
+
+
+NUM_OF_RANDOMS: 1000
+REPEATER: 100
+
+			|	Sort Whole			|	Sort Halves and Merge 	|	Parallel Sorting
+			|	(Part2_combined.c)	|	(Part2_split.c)   		|	(Part5_server.c)
+------------------------------------------------------------------------------------------------
+Average:	|	18093μs				|	13499μs					|	75870μs
+Fastest:	|	17760μs				|	13313μs					|	151953μs
+Slowest:	|	18494μs				|	13650μs					|	5145μs
+
+
+================================================================================================
+================================================================================================
+
+
+NUM_OF_RANDOMS: 10000
+REPEATER: 100
+
+			|	Sort Whole			|	Sort Halves and Merge 	|	Parallel Sorting
+			|	(Part2_combined.c)	|	(Part2_split.c)   		|	(Part5_server.c) //Repeated 37 times
+------------------------------------------------------------------------------------------------
+Average:	|	2819090μs			|	1408677μs				|	759247μs
+Fastest:	|	2800604μs			|	1399519μs				|	1080382μs
+Slowest:	|	2834849μs			|	1416778μs				|	520034μs
+
+
+================================================================================================
+================================================================================================
+
+
+NUM_OF_RANDOMS: 30000
+REPEATER: 25
+
+			|	Sort Whole			|	Sort Halves and Merge 	|	Parallel Sorting
+			|	(Part2_combined.c)	|	(Part2_split.c)   		|	(Part5_server.c)
+------------------------------------------------------------------------------------------------
+Average:	|	25805519μs			|	12475601μs				|	8512555μs
+Fastest:	|	25711946μs			|	12439129μs				|	12592765μs
+Slowest:	|	25884853μs			|	12531974μs				|	4775964μs
+
+
+================================================================================================
+
+Not until the number of random integers increased to 10000 was the network lag overtaken by the processor speed as the main bottleneck of the program. This means that at 10000 integers, the parallel sorting algorithm was the fastest (on average), but was trumped by split algorithm in all tests with a lesser amount of integers.

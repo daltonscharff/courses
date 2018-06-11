@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<table id="categoryTable">
+	<tr>
+		<th>Category</th>
+		<th>Budget</th>
+		<th>Remaining</th>
+		<th></th>
+	</tr>
+	<tr id="c_input">
+		<td><input type="text" placeholder="Category" id="c_categoryInput"></td>
+		<td>$<input type="number" placeholder="0.00" step="0.01" min="0" id="c_budgetInput"></td>
+		<td></td>
+		<td><button onclick="submitCategoryInput()">&#10010;</button></td>
+	</tr>
+</table>
+<br>
+<table id="purchaseTable">
+	<tr>
+		<th>Purchase</th>
+		<th>Cost</th>
+		<th>Category</th>
+		<th>Date</th>
+		<th></th>
+	</tr>
+	<tr id="p_input">
+		<td><input type="text" placeholder="Purchase" id="p_purchaseInput"></td>
+		<td>$<input type="number" placeholder="0.00" step="0.01" min="0" id="p_costInput"></td>
+		<td><select id="p_categorySelect"></select></td>
+		<td><input type="date" id="p_dateInput"></td>
+		<td><button onclick="submitPurchaseInput()">&#10010;</button></td>
+	</tr>
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% if generalError is defined %}
+    <p class="success">
+        {{ generalError }}
+    </p>
+    {% endif %}
+    <form action="" method="POST" id="createStaffForm">
+        <div>
+            <label>Username:</label>
+            {% if usernameError is defined %}
+            <span class="error">{{ usernameError }}</span>
+            {% endif %}
+            <br />
+            <input type="text" name="username" value="{{ username }}" autofocus/>
+        </div>
+        <div>
+            <label>Password:</label>
+            {% if passwordError is defined %}
+            <span class="error">{{ passwordError }}</span>
+            {% endif %}
+            <br />
+            <input type="password" name="password"/>
+        </div>
+        <br />
+        <div>
+            <input type="submit" name="signUpButton" value="Create Account"/>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div id="layoutDiv">
+        <table>
+            <tr>
+                <td>
+                    <h3>{{ title }}</h3>
+                </td>
+                <td>
+                    <a {% if room is defined %} href='/api/leaveRoom?id={{ room.id }}' {% endif %}><h1>Chatty Kathy</h1></a>
+                </td>
+                <td id="usernameArea">
+                    {% if "username" in session %}
+                    {{ session["username"] }}
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+        <hr />
+        {% if room is defined %}
+        <span id="leaveRoomSpan">
+            <button onclick="window.location.replace('/api/leaveRoom?id={{ room.id }}');">&#10094; Leave Room</button>
+        </span>
+        {% endif %}
+        {% if "username" in session %}
+        <span id="logoutSpan">
+            <button onclick="window.location.replace('/logout');">Log Out</button>
+        </span>
+        {% endif %}
+    </div>
+    <br />
+    <br />
+    {% block body %}
+    {% endblock %}
+</body>
+</html>

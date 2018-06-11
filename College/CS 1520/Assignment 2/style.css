@@ -1,0 +1,129 @@
+body {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+hr {
+    padding: 0px;
+    margin: 0px;
+}
+
+h1 {
+    margin-bottom: 5px;
+    padding-bottom: 0px;
+}
+
+h2 {
+    font-size: .9em;
+    margin-top: 0px;
+    margin-bottom: 1em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+td, th{
+    padding: 3px;
+}
+
+td:nth-child(1), th:nth-child(1) {
+    width: 20%;
+    /* text-align: right; */
+}
+
+td:nth-child(2), th:nth-child(2) {
+    width: 60%;
+}
+
+td:nth-child(3), th:nth-child(3) {
+    width: 20%;
+    /* text-align: left; */
+}
+
+button {
+    margin-top: 1em;
+}
+
+.gameboard, .scoreboard{
+    width: 600px;
+    margin-left: inherit;
+    margin-right: inherit;
+    text-align: center;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    text-align: center;
+    margin-left: inherit;
+    margin-right: inherit;
+    margin-bottom: 20px;
+    width: 400px;
+}
+
+.gridLabel {
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+}
+
+.gridItem {
+    text-align: center;
+    width: 30px;
+    height: 30px;
+}
+
+.gridBody {
+}
+
+.gridItem p, .gridItem label {
+    display: block;
+    margin-top: 8px;
+}
+
+.lightblueBG {
+    background-color: lightblue;
+}
+
+.whiteBG {
+    box-shadow: inset 0px 0px 0px 1px lightblue;
+}
+
+.redBG {
+    background-color: red;
+}
+
+.rightAlign{
+    text-align: right;
+}
+
+.rightAlign .gridItem p {
+    padding-right: 5px;
+}
+
+.centerAlign{
+    text-align: center;
+}
+
+.leftAlign{
+    text-align: left;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.clickable:hover {
+    background-color: #B6E4F2;
+}

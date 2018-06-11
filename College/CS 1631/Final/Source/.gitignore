@@ -1,0 +1,5 @@
+*.class
+SISv5/Components/EmailFetcher/*.java
+SISv5/Components/VotingApp/*.java
+SISv5/Components/Driver/*.java
+SISv5/Scripts/runIndividualComp/*.bat
