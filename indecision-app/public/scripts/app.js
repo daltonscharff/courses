@@ -3,18 +3,29 @@
 console.log("App.js is running!");
 
 // JSX - JavaScript XML
+var app = {
+    title: "Title",
+    subtitle: "Subtitle",
+    options: ["One", "Two"]
+};
+
 var template = React.createElement(
     "div",
     null,
     React.createElement(
         "h1",
         null,
-        "Indecision App"
+        app.title
+    ),
+    app.subtitle && React.createElement(
+        "p",
+        null,
+        app.subtitle
     ),
     React.createElement(
         "p",
         null,
-        "This is some info"
+        app.options.length > 0 ? "Here are your options" : "No options"
     ),
     React.createElement(
         "ol",
@@ -32,26 +43,38 @@ var template = React.createElement(
     )
 );
 
-var templateTwo = React.createElement(
+var user = {
+    name: 'Dalton',
+    age: '23',
+    location: 'Dallas'
+};
+
+function getLocation(location) {
+    return location ? React.createElement(
+        "p",
+        null,
+        "Location: ",
+        location
+    ) : undefined;
+}
+
+var template2 = React.createElement(
     "div",
     null,
     React.createElement(
         "h1",
         null,
-        "Dalton Scharff"
+        user.name ? user.name : "Anonymous"
     ),
-    React.createElement(
+    user.age && user.age >= 18 && React.createElement(
         "p",
         null,
-        "Age: 23"
+        "Age: ",
+        user.age
     ),
-    React.createElement(
-        "p",
-        null,
-        "Location: Dallas"
-    )
+    getLocation(user.location)
 );
 
 var appRoute = document.querySelector('#app');
 
-ReactDOM.render(templateTwo, appRoute);
+ReactDOM.render(template, appRoute);
