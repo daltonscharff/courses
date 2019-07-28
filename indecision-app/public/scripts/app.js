@@ -1,80 +1,41 @@
-"use strict";
+'use strict';
 
-console.log("App.js is running!");
+// argument object - no longer bound with arrow funcitons
 
-// JSX - JavaScript XML
-var app = {
-    title: "Title",
-    subtitle: "Subtitle",
-    options: ["One", "Two"]
+var add = function add(a, b) {
+    return a + b;
 };
 
-var template = React.createElement(
-    "div",
-    null,
-    React.createElement(
-        "h1",
-        null,
-        app.title
-    ),
-    app.subtitle && React.createElement(
-        "p",
-        null,
-        app.subtitle
-    ),
-    React.createElement(
-        "p",
-        null,
-        app.options.length > 0 ? "Here are your options" : "No options"
-    ),
-    React.createElement(
-        "ol",
-        null,
-        React.createElement(
-            "li",
-            null,
-            "Item one"
-        ),
-        React.createElement(
-            "li",
-            null,
-            "Item two"
-        )
-    )
-);
+document.writeln(add(55, 1));
+
+// this keyword - no longer bound
 
 var user = {
     name: 'Dalton',
-    age: '23',
-    location: 'Dallas'
+    cities: ['Dallas', 'Pittsburgh', 'Reading'],
+    printPlacesLived: function printPlacesLived() {
+        var _this = this;
+
+        return this.cities.map(function (city) {
+            return _this.name + " has lived in " + city;
+        });
+    }
 };
 
-function getLocation(location) {
-    return location ? React.createElement(
-        "p",
-        null,
-        "Location: ",
-        location
-    ) : undefined;
-}
+document.writeln(user.printPlacesLived());
 
-var template2 = React.createElement(
-    "div",
-    null,
-    React.createElement(
-        "h1",
-        null,
-        user.name ? user.name : "Anonymous"
-    ),
-    user.age && user.age >= 18 && React.createElement(
-        "p",
-        null,
-        "Age: ",
-        user.age
-    ),
-    getLocation(user.location)
-);
+// Challenge area
 
-var appRoute = document.querySelector('#app');
+var multiplier = {
+    numbers: [1, 2, 3],
+    multiplyBy: 2,
+    multiply: function multiply() {
+        var _this2 = this;
 
-ReactDOM.render(template, appRoute);
+        return this.numbers.map(function (number) {
+            return number * _this2.multiplyBy;
+        });
+    }
+};
+
+document.writeln("<br><br>", multiplier.multiply());
