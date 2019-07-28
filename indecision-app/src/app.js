@@ -1,41 +1,49 @@
 console.log("App.js is running!");
 
 const app = {
-    title: "Title",
-    subtitle: "Subtitle", 
-    options: ["One", "Two"]
+    title: "Indecision App",
+    subtitle: "Put your life in the hands of a computer", 
+    options: []
 };
 
-const template = (
-    <div>
-        <h1>{app.title}</h1>
-        {app.subtitle && <p>{app.subtitle}</p>}
-        <p>{app.options.length > 0 ? "Here are your options" : "No options"}</p>
-        <ol>
-            <li>Item one</li>
-            <li>Item two</li>
-        </ol>
-    </div>
-);
+const onFormSubmit = (e) => {
+    e.preventDefault();
 
-const user = {
-    name: 'Dalton',
-    age: '23',
-    location: 'Dallas'
+    const option = e.target.elements.option.value;
+    
+    if (option) {
+        app.options.push(option);
+        e.target.elements.option.value = '';
+        render();
+    }
 };
 
-function getLocation(location) {
-    return location ? <p>Location: {location}</p> : undefined;
+const removeAll = () => {
+    app.options = [];
+    render();
 }
 
-const template2 = (
-    <div>
-        <h1>{user.name ? user.name : "Anonymous"}</h1>
-        {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
-        {getLocation(user.location)}
-    </div>
-);
+const appRoot = document.querySelector('#app');
 
-const appRoute = document.querySelector('#app');
+const render = () => {
+    const template = (
+        <div>
+            <h1>{app.title}</h1>
+            {app.subtitle && <p>{app.subtitle}</p>}
+            <p>{app.options.length > 0 ? "Here are your options" : "No options"}</p>
+            <p>{app.options.length}</p>
+            <button onClick={removeAll}>Remove All</button>
+            <ol>
+                <li>Item one</li>
+                <li>Item two</li>
+            </ol>
+            <form onSubmit={onFormSubmit}>
+                <input type="text" name="option"/>
+                <button>Add Option</button>
+            </form>
+        </div>
+    );
+    ReactDOM.render(template, appRoot);
+};
 
-ReactDOM.render(template, appRoute);
+render();
