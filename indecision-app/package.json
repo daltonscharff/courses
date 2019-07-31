@@ -10,6 +10,6 @@
   },
   "scripts": {
     "babel": "babel ./src/app.js --out-file=./public/scripts/app.js --watch",
-    "serve": "live-server ./public"
+    "liveserver": "live-server ./public"
   }
 }
