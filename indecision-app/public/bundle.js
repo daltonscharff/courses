@@ -21576,7 +21576,7 @@ var AddOption = function (_React$Component) {
     }
 
     _createClass(AddOption, [{
-        key: "handleAddOption",
+        key: 'handleAddOption',
         value: function handleAddOption(e) {
             e.preventDefault();
 
@@ -21586,26 +21586,30 @@ var AddOption = function (_React$Component) {
             this.setState(function () {
                 return { error: error };
             });
+
+            if (!error) {
+                e.target.elements.option.value = '';
+            }
         }
     }, {
-        key: "render",
+        key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                "div",
+                'div',
                 null,
                 this.state.error && _react2.default.createElement(
-                    "p",
+                    'p',
                     null,
                     this.state.error
                 ),
                 _react2.default.createElement(
-                    "form",
+                    'form',
                     { onSubmit: this.handleAddOption },
-                    _react2.default.createElement("input", { type: "text", name: "option" }),
+                    _react2.default.createElement('input', { type: 'text', name: 'option' }),
                     _react2.default.createElement(
-                        "button",
+                        'button',
                         null,
-                        "Add Option"
+                        'Add Option'
                     )
                 )
             );
@@ -21757,6 +21761,11 @@ var Options = function Options(props) {
             { onClick: props.handleDeleteOptions },
             'Remove All'
         ),
+        props.options.length === 0 && _react2.default.createElement(
+            'p',
+            null,
+            'Please add an option to get started!'
+        ),
         props.options.map(function (option) {
             return _react2.default.createElement(_Option2.default, {
                 key: option,
@@ -21819,7 +21828,7 @@ var IndecisionApp = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
 
         _this.state = {
-            options: props.options
+            options: []
         };
         _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
         _this.handleDeleteOption = _this.handleDeleteOption.bind(_this);
@@ -21831,12 +21840,26 @@ var IndecisionApp = function (_React$Component) {
     _createClass(IndecisionApp, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            console.log('fetching data');
+            try {
+                var json = localStorage.getItem('options');
+                var options = JSON.parse(json);
+
+                if (options) {
+                    this.setState(function () {
+                        return { options: options };
+                    });
+                }
+            } catch (e) {
+                // Do nothing
+            }
         }
     }, {
         key: 'componentDidUpdate',
         value: function componentDidUpdate(prevProps, prevState) {
-            console.log('saving data');
+            if (prevState.options.length !== this.state.options.length) {
+                var json = JSON.stringify(this.state.options);
+                localStorage.setItem('options', json);
+            }
         }
     }, {
         key: 'componentWillUnmount',
@@ -21910,11 +21933,6 @@ var IndecisionApp = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = IndecisionApp;
-
-
-IndecisionApp.defaultProps = {
-    options: []
-};
 
 /***/ })
 /******/ ]);
