@@ -3,9 +3,3 @@ public/dist/
 .env.test
 .env.development
 .vscode
-
-public/bundle.js
-public/bundle.js.map
-public/styles.css
-public/styles.css.map
-
