@@ -9,25 +9,11 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
     const db = client.db(databaseName);
 
-    // db.collection('users').findOne({
-    //     _id: new ObjectID('5d857770776d632fe87f0458')
-    // },(error, user) => {
-    //     if (error) return console.log('Unable to fetch');
-
-    //     console.log(user);
-    // });
-
-    // db.collection('users').find({ name: "Dalton" }).toArray((error, users) => {
-    //     console.log(users);
-    // });
-
-    db.collection('tasks').findOne({
-        _id: new ObjectID('5d85780441d11b196c712f7d')
-    }, (error, task) => {
-        console.log(task);
-    });
-
-    db.collection('tasks').find({ completed: false }).toArray((error, tasks) => {
-        console.log(tasks);
+    db.collection('tasks').deleteOne({
+        description: 'Clean the house'
+    }).then((result) => {
+        console.log(result);
+    }).catch((error) => {
+        console.log(error);
     })
 });
