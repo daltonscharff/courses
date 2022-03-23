@@ -13,37 +13,37 @@ export const Options = ({ optionType }) => {
   const [orderDetails, updateItemCount] = useOrderDetails();
 
   useEffect(() => {
-    // axios
-    //   .get(`http://localhost:3030/${optionType}`)
-    //   .then((response) => setItems(response.data))
-    //   .catch((_) => setError(true));
-    setItems(
-      optionType === "scoops"
-        ? [
-            {
-              name: "Chocolate",
-              imagePath: "/images/chocolate.png",
-            },
-            {
-              name: "Vanilla",
-              imagePath: "/images/vanilla.png",
-            },
-          ]
-        : [
-            {
-              name: "Cherries",
-              imagepath: "/images/cherries.png",
-            },
-            {
-              name: "M&Ms",
-              imagePath: "/images/m-and-ms.png",
-            },
-            {
-              name: "Hot fudge",
-              imagePath: "/images/hot-fudge.png",
-            },
-          ]
-    );
+    axios
+      .get(`http://localhost:3030/${optionType}`)
+      .then((response) => setItems(response.data))
+      .catch((_) => setError(true));
+    // setItems(
+    //   optionType === "scoops"
+    //     ? [
+    //         {
+    //           name: "Chocolate",
+    //           imagePath: "/images/chocolate.png",
+    //         },
+    //         {
+    //           name: "Vanilla",
+    //           imagePath: "/images/vanilla.png",
+    //         },
+    //       ]
+    //     : [
+    //         {
+    //           name: "Cherries",
+    //           imagepath: "/images/cherries.png",
+    //         },
+    //         {
+    //           name: "M&Ms",
+    //           imagePath: "/images/m-and-ms.png",
+    //         },
+    //         {
+    //           name: "Hot fudge",
+    //           imagePath: "/images/hot-fudge.png",
+    //         },
+    //       ]
+    // );
   }, [optionType]);
 
   if (error) {

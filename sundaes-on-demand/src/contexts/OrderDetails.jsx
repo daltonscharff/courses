@@ -25,12 +25,6 @@ export function useOrderDetails() {
 }
 
 export function calculateSubtotal(optionType, optionCounts) {
-  // if (!optionCounts[optionType].values()) return 0;
-  // let optionCount = optionCounts[optionType]
-  //   .values()
-  //   .reduce((total, value) => total + value, 0);
-
-  // return optionCount * pricePerItem[optionType];
   let optionCount = 0;
   for (const count of optionCounts[optionType].values()) {
     optionCount += count;
