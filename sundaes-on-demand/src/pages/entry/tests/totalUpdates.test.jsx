@@ -4,7 +4,9 @@ import { Options } from "../Options";
 import { OrderDetailsProvider } from "../../../contexts/OrderDetails";
 
 test("update scoop subtotal when the scoops change", async () => {
-  render(<Options optionType="scoops" />, { wrapper: OrderDetailsProvider });
+  render(<Options optionType="scoops" />, {
+    wrapper: OrderDetailsProvider,
+  });
 
   const scoopsSubtotal = screen.getByText("Scoops total: $", { exact: false });
   expect(scoopsSubtotal).toHaveTextContent("0.00");
@@ -20,6 +22,6 @@ test("update scoop subtotal when the scoops change", async () => {
     name: "Chocolate",
   });
   userEvent.clear(chocolateInput);
-  userEvent.type(chocolateInput);
+  userEvent.type(chocolateInput, "2");
   expect(scoopsSubtotal).toHaveTextContent("6.00");
 });
