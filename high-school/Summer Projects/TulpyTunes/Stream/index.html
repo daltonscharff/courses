@@ -1,0 +1,115 @@
+<!DOCTYPE HTML> 
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Tulpehocken Area School District Video Streaming</title>
+  	<link href="styles/main.css" rel="stylesheet" type="text/css">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link href="video/video-js.css" rel="stylesheet">
+	<script src="video/video.js"></script>
+	<script>
+    		videojs.options.flash.swf = "video/video-js.swf";
+  	</script>
+
+
+</head>
+
+<body onbeforeunload="myFunction()">
+
+<table>
+	<!-- Yellow Top Bar -->
+	<tr>
+		<td id="top_line">
+		</td>	
+	</tr>
+
+	<!-- Dark Blue Title Bar -->
+	<tr>
+		<td class="title_bar">
+			<a href = "http://www.tulpehocken.org"><img src="images/logo.png" alt="Tulpehocken Area School District Logo" id="logo"></a>
+		</td>
+		<img src="images/shadow.png" id="shadow">
+	</tr>
+
+	<!-- Body -->
+	<tr>
+		<td>
+			<h1 class="main" id="title">Tulpehocken Area School District</h1>
+		</td>
+	</tr>
+	
+	<tr>
+		<td class="main" id="link">
+			<a href = "https://docs.google.com/forms/d/1TNWAIz2RWCbfiwOBN2duLcjFbaQSDT01qXtm6xTGZrY/viewform?usp=send_form" target="blank" color="white">After the show, click here to take a short survey about your experience.</a>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<video id="example_video_1 video" class="video-js vjs-default-skin main" controls autoplay preload="none" width="900" height="506" poster="TitleCards/Default.jpg" data-setup='{}'>
+    				<source src="rtmp://stream.tulpehocken.org/live/test" type='rtmp/flv' />
+    				<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+  			</video>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<p class="main" id="copyright">&copy;2015 Tulpehocken Area School District</p>
+		</td>
+	</tr>
+
+	
+
+	<!-- Bottom Logo -->
+	<tr>
+		<td>
+			<img src="images/trojan_head.png" alt="Trojan Head Watermark" id="watermark">
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>
+
+<script language=javascript>
+var isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
+
+if(isMobile.Android() || isMobile.Windows()){
+   location.replace("http://stream.tulpehocken.org/MobileDevices.html");
+}else if(isMobile.iOS()){
+   location.replace("http://stream.tulpehocken.org/hls/test.m3u8");
+}
+
+/*
+<!--
+if ((navigator.platform.match("iPhone")) || (navigator.platform.match("iPod")) || (navigator.platform.match("iPad")))
+{
+   location.replace("http://stream.tulpehocken.org/hls/test.m3u8");
+}
+else
+{
+   location.replace("http://stream.tulpehocken.org/MobileDevices.html");
+}
+-->
+*/
+</script>
